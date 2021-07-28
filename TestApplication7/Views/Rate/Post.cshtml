@@ -1,0 +1,51 @@
+﻿
+@{ ViewBag.Title = "Post"; }
+<h2>Post</h2>
+
+
+
+
+
+
+@if (ViewBag.RatingModel.EstimatedCost <= 10)
+{
+    ViewBag.Message = "This is a very inexpensive rate";
+
+}
+
+@if (ViewBag.RatingModel.EstimatedCost >= 10)
+{
+    ViewBag.Message = "This is an expensive rate";
+}
+
+@if (ViewBag.Error != null)
+{
+<div class="alert alert-success" role="alert">
+    <p>Error: @ViewBag.Error</p>
+</div>
+}
+else
+{
+<p>
+Here is the rating response for ICS Next Day for a
+
+<div class="alert alert-success" role="alert">
+    <p>Message: @ViewBag.Message</p>
+
+</div>
+
+
+
+@ViewBag.RatingModel.Length x
+@ViewBag.RatingModel.Height x
+@ViewBag.RatingModel.Width
+<br />
+Weighing : @ViewBag.RatingModel.Weight Lbs
+<br />
+To Postal Code: @ViewBag.RatingModel.PostalCode
+</p>
+            <p>Result for rating is @ViewBag.RatingModel.EstimatedCost</p>
+
+                            
+}
+<p>@Html.ActionLink("Rate again?", "Index", "Rate")</p>
